@@ -42,6 +42,7 @@ a:active {
 
 :root {
   --neutral-clr-200: hsl(213deg 100% 99%);
+  --neutral-clr-300: hsl(0, 0%, 92%);
   --accent-clr-dark-blue-700: hsl(210deg 59% 16%);
   --accent-clr-blue-600: hsl(199deg 58% 20%);
   --accent-clr-cyan: hsl(180deg 50% 60%);
@@ -53,14 +54,13 @@ nav {
   display: flex;
   align-items: center;
   background-color: var(--accent-clr-dark-blue-700);
-  height: 40px;
+  height: 2.5rem;
   width: 100vw;
-  padding: 50px;
-  border-radius: 0 0 20px 20px;
+  padding: 3.125rem;
+  border-radius: 0 0 25px 25px;
   box-shadow: 0px 12px 13px -2px #d6d6d6;
 }
-
-nav > h2 {
+nav h2 {
   color: #fff;
   margin: 0;
 }
@@ -76,28 +76,23 @@ table {
   border-radius: 15px;
   border-spacing: 0;
   overflow: hidden;
-  border: 2px solid hsl(0, 0%, 92%);
+  border: 2px solid var(--neutral-clr-300);
 }
-
 table td + td {
-  border-left: 2px solid hsl(0, 0%, 92%);
+  border-left: 2px solid var(--neutral-clr-300);
 }
-
-th {
+table th {
   background-color: var(--accent-clr-blue-600);
   color: #fff;
-  padding: 20px;
+  padding: 1.25rem;
 }
-
-td {
-  padding: 15px;
+table td {
+  padding: 0.9375rem;
 }
-
-tr:nth-child(even) {
+table tr:nth-child(even) {
   background-color: hsl(0, 0%, 93%);
 }
-
-td:nth-child(2) {
+table td:nth-child(2), table td:nth-child(3) {
   text-align: center;
 }
 
@@ -107,25 +102,23 @@ td:nth-child(2) {
   align-items: center;
   background-color: var(--accent-clr-blue-600);
   color: #fff;
-  padding: 20px;
+  padding: 1.25rem;
   border-radius: 15px;
-  gap: 20px;
+  gap: 1.25rem;
 }
-
-.interactions-box > h3,
-h2 {
+.interactions-box h3,
+.interactions-box h2 {
   margin: 0;
 }
 
 .chart {
-  border: 2px solid hsl(0, 0%, 92%);
+  border: 2px solid var(--neutral-clr-300);
   border-radius: 15px;
   height: 718px;
   width: 600px;
   padding: 20px 0 0 60px;
   flex: 1.5;
 }
-
 .chart h3 {
   text-align: center;
 }
@@ -133,11 +126,11 @@ h2 {
 .stats-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  height: 700px;
+  gap: 1.25rem;
+  height: 43.75rem;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 60.5rem) {
   .stats-wrapper {
     flex-direction: column;
     height: 100%;
@@ -145,6 +138,6 @@ h2 {
   .chart {
     order: 1;
     width: 100%;
-    padding-left: 20px;
+    padding-left: 1.25rem;
   }
 }/*# sourceMappingURL=style.css.map */
