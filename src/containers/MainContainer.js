@@ -25,8 +25,14 @@ const MainContainer = () => {
                         return counts;
                     }, {});
 
+                    // find the total number of interactions
                     const totalInteractions = data.length;
                     setTotalInteractions(totalInteractions);
+
+
+                    // calculate the number of interactions for each sector
+                    setSectorInteractions(sectorCounts)
+
 
                     const percentages = {};
                     for (const sector in sectorCounts) {
@@ -58,31 +64,12 @@ const MainContainer = () => {
                 <h2 className='navbar__logo'>Substantive Research</h2>
             </nav>
 
-            {/* {Object.keys(sectorPercentages).map((sector) => (
-                <div key={sector}>
-                    <p>{sector}: {sectorPercentages[sector].toFixed(2)}%</p>
-                </div>
-            ))} */}
-
             <main>
-                
-
                 <div className="stats-wrapper">
-                    <TableComponent sectorPercentages={sortedSectorPercentages} totalInteractions={totalInteractions} />
+                    <TableComponent sectorPercentages={sortedSectorPercentages} totalInteractions={totalInteractions} sectorInteractions={sectorInteractions}/>
                     <ChartComponent sectorPercentages={sortedSectorPercentages} />
                 </div>
             </main>
-           
-
-
-            {/* <ul>
-                {interactionData.map((item, index) => (
-                    <li key={index}>
-                        Date: {item.date}, Name: {item.name}, Sector ID: {item.sector_id}
-                    </li>
-                ))}
-            </ul> */}
-
         </>
     );
 }
@@ -94,3 +81,11 @@ export default MainContainer;
 // calculate percentages of each sector by finding the total number of interactions in dataset
 // total number of interaction with each sector
 // divide above number with total number of interactions and multiply by 100
+
+            {/* <ul>
+                {interactionData.map((item, index) => (
+                    <li key={index}>
+                        Date: {item.date}, Name: {item.name}, Sector ID: {item.sector_id}
+                    </li>
+                ))}
+            </ul> */}

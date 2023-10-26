@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableComponent = ({ sectorPercentages, totalInteractions }) => {
+const TableComponent = ({ sectorPercentages, totalInteractions, sectorInteractions}) => {
     return (
         <>
             <div className="column1">
@@ -20,7 +20,7 @@ const TableComponent = ({ sectorPercentages, totalInteractions }) => {
                         {sectorPercentages.map((sectorPercentage) => (
                             <tr key={sectorPercentage.sector}>
                                 <td>{sectorPercentage.sector}</td>
-                                <td>{sectorPercentage.interactions}</td>
+                                <td>{sectorInteractions[sectorPercentage.sector] || 0}</td>
                                 <td>{sectorPercentage.percentage.toFixed(0)}%</td>
                             </tr>
                         ))}
