@@ -24,12 +24,7 @@ const TableComponent = ({ sectorPercentages, totalInteractions, sectorInteractio
                                 <td>{sectorPercentage.percentage.toFixed(0)}%</td>
                             </tr>
                         ))}
-                        {/* {Object.keys(sectorPercentages).map((sector) => (
-                        <tr key={sector}>
-                            <td>{sector}</td>
-                            <td>{sectorPercentages[sector].toFixed(0)}%</td>
-                        </tr>
-                    ))} */}
+                        
                     </tbody>
                 </table>
             </div>

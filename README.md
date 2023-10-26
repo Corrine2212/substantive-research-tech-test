@@ -17,6 +17,7 @@ Processing had to be done through Javascript using my favourite framework.
 ## Improvements:
 - Have a filter option which allows the user to filter which sectors they want to view. 
 - Look into how to access the styling options for the chart or look at other options that can be easily customised.
+- Perhaps have a different chart to include dates
 
 ### Tech stack used:
 - Javascript

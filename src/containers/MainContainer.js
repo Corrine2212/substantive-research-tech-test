@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../dist/style.css';
-
-// import PieChart from '../components/Charts';
 import ChartComponent from '../components/Charts';
 import TableComponent from '../components/Tables';
 
@@ -76,16 +74,3 @@ const MainContainer = () => {
 
 export default MainContainer;
 
-
-// first ensure that you can pull and render data from the api
-// calculate percentages of each sector by finding the total number of interactions in dataset
-// total number of interaction with each sector
-// divide above number with total number of interactions and multiply by 100
-
-            {/* <ul>
-                {interactionData.map((item, index) => (
-                    <li key={index}>
-                        Date: {item.date}, Name: {item.name}, Sector ID: {item.sector_id}
-                    </li>
-                ))}
-            </ul> */}

@@ -31,7 +31,7 @@ const ChartComponent = ({ sectorPercentages }) => {
 
     const legendOptions = {
         display: true,
-        position: 'right', // Position the legend on the right side
+        position: 'right', 
     };
 
     return (
@@ -44,7 +44,7 @@ const ChartComponent = ({ sectorPercentages }) => {
                         legend: legendOptions,
                         title: {
                             display: true,
-                            text: chartTitle, // Display the chart title
+                            text: chartTitle,
                         },
                     }
                 }}
