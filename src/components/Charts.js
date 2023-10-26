@@ -1,92 +1,58 @@
-// import React from 'react';
-// import { Pie } from 'react-chartjs-2';
+import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
-// const PieChart = ({ sectorPercentages }) => {
-//     const chartData = {
-//         labels: Object.keys(sectorPercentages),
-//         datasets: [
-//             {
-//                 data: Object.values(sectorPercentages),
-//                 backgroundColor: [
-//                     'red',
-//                     'blue',
-//                     'green',
-//                     'pink',
-//                     'orange',
-//                     'yellow',
-//                     // Add more colors as needed
-//                 ],
-//             },
-//         ],
-//     };
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-//     return (
-//         <>
-//             <h1>piechart</h1>
+const ChartComponent = ({ sectorPercentages }) => {
+    const chartData = {
+        labels: sectorPercentages.map((sectorPercentage) => sectorPercentage.sector),
+        datasets: [
+            {
+                data: sectorPercentages.map((sectorPercentage) => sectorPercentage.percentage),
+                backgroundColor: [
+                    '#0039CC',
+                    '#0040E6',
+                    '#1A4DFF',
+                    '#3364FF',
+                    '#4D7BFF',
+                    '#6693FF',
+                    '#80ABFF',
+                    '#99C2FF',
+                    '#B3D9FF',
+                    '#CCEBFF',
+                    '#E6F7FF',
+                ],
+            },
+        ],
+    };
 
-//             <div style={{ maxWidth: '400px' }}>
-//                 <Pie data={chartData} />
-//             </div>
+    const chartTitle =  "title"
 
-//         </>
+    const legendOptions = {
+        display: true,
+        position: 'right', // Position the legend on the right side
+    };
 
-//     )
-// }
+    return (
+        <div className="chart">
+            <h3>Sector Distribution</h3>
+            <Pie
+                data={chartData}
+                options={{
+                    plugins: {
+                        legend: legendOptions,
+                        title: {
+                            display: true,
+                            text: chartTitle, // Display the chart title
+                        },
+                    }
+                }}
+            />
+        </div>
+    );
+};
 
-// export default PieChart;
+export default ChartComponent;
 
 
-
-// import React, { useEffect, useRef, useState } from 'react';
-// import Chart from 'chart.js/auto';
-// import { Line } from "react-chartjs-2";
-
-
-// const Charts = ({ data }) => {
-//     const chartRef = useRef(null)
-//     const [chart, setChart] = useState(null);
-
-//     useEffect(() => {
-
-//         if (chart) {
-//             chart.destroy();
-//         }
-
-//         if (chartRef.current) {
-//             const newChart = new Chart(chartRef.current, {
-//                 type: 'line',
-//                 data: {
-
-//                     labels: data.map((item) => item.date),
-//                     datasets: [
-//                         {
-//                             label: 'Chart title',
-//                             data: data.map((item) => item.sector_id),
-//                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//                             borderColor: 'rgba(75, 192, 192, 1)',
-//                             borderWidth: 1,
-//                         },
-//                     ],
-//                 },
-//                 options: {
-//                     scales: {
-//                         y: {
-//                             beginAtZero: true,
-//                         }
-//                     }
-//                 }
-//             });
-//             setChart(newChart);
-//         }
-//     }, [data]);
-
-//     return (
-//         <>
-//             <h1>chart components</h1>
-//             <Line ref={chartRef}/>
-
-//         </>
-//     );
-// }
-
-// export default Charts;

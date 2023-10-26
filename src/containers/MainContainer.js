@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import '../dist/style.css';
 
 // import PieChart from '../components/Charts';
-// import Charts from '../components/Charts';
+import ChartComponent from '../components/Charts';
+import TableComponent from '../components/Tables';
 
 const MainContainer = () => {
     const [interactionData, setInteractionData] = useState([]);
     const [sectorPercentages, setSectorPercentages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [totalInteractions, setTotalInteractions] = useState(0)
+    const [sectorInteractions, setSectorInteractions] = useState(0)
 
     useEffect(() => {
         fetch('https://substantive.pythonanywhere.com/')
@@ -30,6 +32,9 @@ const MainContainer = () => {
                     for (const sector in sectorCounts) {
                         percentages[sector] = (sectorCounts[sector] / totalInteractions) * 100;
                     }
+                    for (const sector in percentages) {
+                        percentages[sector] = parseFloat(percentages[sector]);
+                    }
 
                     setSectorPercentages(percentages);
                 }
@@ -37,6 +42,11 @@ const MainContainer = () => {
             .catch((error) => console.error("Error", error))
             .finally(() => setIsLoading(false));
     }, []);
+
+    // sort the data in descending order
+    const sortedSectorPercentages = Object.entries(sectorPercentages)
+        .map(([sector, percentage]) => ({ sector, percentage }))
+        .sort((a, b) => b.percentage - a.percentage);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -55,33 +65,14 @@ const MainContainer = () => {
             ))} */}
 
             <main>
-                <div className='interactions-box'>
-                    <h3>Total number of interactions: {totalInteractions}</h3>
-                </div>
+                
 
                 <div className="stats-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sector</th>
-                                <th>Percentage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.keys(sectorPercentages).map((sector) => (
-                                <tr key={sector}>
-                                    <td>{sector}</td>
-                                    <td>{sectorPercentages[sector].toFixed(0)}%</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className='chart'>
-                        <h3>Chart</h3>
-                    </div>
+                    <TableComponent sectorPercentages={sortedSectorPercentages} totalInteractions={totalInteractions} />
+                    <ChartComponent sectorPercentages={sortedSectorPercentages} />
                 </div>
             </main>
-            {/* <PieChart sectorPercentages={sectorPercentages}/> */}
+           
 
 
             {/* <ul>
@@ -91,8 +82,6 @@ const MainContainer = () => {
                     </li>
                 ))}
             </ul> */}
-
-            {/* <Charts data={interactionData} /> */}
 
         </>
     );
